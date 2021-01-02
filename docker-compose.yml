@@ -1,0 +1,18 @@
+version: "3.9"
+services:
+  java-app:
+    build: .
+    ports:
+      - "8080:8080"
+  mongodb:
+    image: mongo:4.4.2
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=username
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    volumes:
+    - mongodb-volume:/data/db
+volumes:
+  mongodb-volume:
+    name: mongodb-volume
